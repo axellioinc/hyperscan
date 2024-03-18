@@ -1204,6 +1204,8 @@ if (NOT FAT_RUNTIME)
             src/hs_valid_platform.c
             $<TARGET_OBJECTS:hs_exec>
             $<TARGET_OBJECTS:hs_compile>)
+          # Modern CMake hack
+          target_include_directories(hs PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_BINARY_DIR})
     endif (BUILD_STATIC_LIBS)
 
     if (BUILD_STATIC_AND_SHARED OR BUILD_SHARED_LIBS)
@@ -1282,6 +1284,8 @@ else (FAT_RUNTIME)
            $<TARGET_OBJECTS:hs_compile>
            $<TARGET_OBJECTS:hs_exec_common>
            ${RUNTIME_LIBS})
+         # Modern CMake hack
+         target_include_directories(hs PUBLIC ${PROJECT_SOURCE_DIR}/src ${PROJECT_BINARY_DIR})
 
     endif (BUILD_STATIC_LIBS)
 
